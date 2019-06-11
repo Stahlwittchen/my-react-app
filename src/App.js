@@ -1,25 +1,48 @@
 import React from 'react';
+import './App.scss';
+import Grid from "./Components/grid";
+import Clock from "./Components/clock"
+import { BrowserRouter, Route, Link } from "react-router-dom";
 import logo from './logo.svg';
-import './App.css';
+import LoginControl from './Components/loginControl';
+
+const Data = {
+    items: [
+        {title: 'item 1', description: 'lorem 1'},
+        {title: 'item 2', description: 'lorem 2'},
+        {title: 'item 3', description: 'lorem 3'},
+        {title: 'item 4', description: 'lorem 4'},
+        {title: 'item 5', description: 'lorem 5'},
+        {title: 'item 6', description: 'lorem 6'}
+    ]
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter className="App">
+        <header>
+            <div className="container App-header">
+                <div className="App-header__logo">
+                    <img src={logo} className="App-logo" alt="logo" />
+                </div>
+                <div  className="App-nav">
+                    <li>
+                        <Link to='/'>Home</Link>
+                    </li>
+                    <li>
+                        <Link to='/Grid'>Grid</Link>
+                    </li>
+                </div>
+                <LoginControl  isLoggedIn={false}  />
+            </div>
+        </header>
+        <main className="container">
+            <Route exact path='/' component={Clock}  />
+            <Route path='/Grid'
+                   render={(props) => <Grid {...props} data={Data}/>}
+            />
+        </main>
+    </BrowserRouter>
   );
 }
 
