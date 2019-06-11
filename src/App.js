@@ -22,17 +22,14 @@ function App() {
     <BrowserRouter className="App">
         <header>
             <div className="container App-header">
-                <div className="App-header__logo">
+                <a href='#' className="App-header__logo">
                     <img src={logo} className="App-logo" alt="logo" />
-                </div>
-                <div  className="App-nav">
-                    <li>
-                        <Link to='/'>Home</Link>
-                    </li>
-                    <li>
-                        <Link to='/Grid'>Grid</Link>
-                    </li>
-                </div>
+                    <span className="App-header__logo--text">My react app</span>
+                </a>
+                <nav  className="App-nav">
+                    <Link to='/' className='App-nav__link'>Home</Link>
+                    <Link to='/Grid' className='App-nav__link'>Grid</Link>
+                </nav>
                 <LoginControl  isLoggedIn={false}  />
             </div>
         </header>
