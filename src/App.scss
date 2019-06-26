@@ -2,19 +2,7 @@
   animation: App-logo-spin infinite 20s linear;
   height: 50px;
   pointer-events: none;
-}
-
-header {
-  background-color: #282c34;
-}
-.App-header {
-  display: flex;
-  color: white;
-  align-items: center;
-  justify-content: space-between;
-  &__logo {
-    align-self: center;
-  }
+  float: left;
 }
 
 @keyframes App-logo-spin {
@@ -26,23 +14,30 @@ header {
   }
 }
 
-.container{
-  width: 1024px;
-  margin: auto;
+.App-header {
+  display: flex;
+  color: white;
+  align-items: center;
+  justify-content: space-between;
+  &__logo {
+    clear: both;
+    &--text {
+      line-height: 50px;
+    }
+  }
 }
 
 .App-nav {
-  li {
-    display: inline-block;
-    padding: 10px;
-    &:hover {
-      background: #66666691;
-      border-radius: 10px;
-    }
-  }
-  a {
+  &__link {
     text-decoration: none;
     color: #fff;
+    display: inline-block;
+    padding: 6px 10px;
+    line-height: 1.2;
+    &:hover {
+      background: #000;
+      border-radius: 5px;
+    }
   }
 }
 
@@ -60,5 +55,22 @@ header {
   &__item {
     padding: 10px;
     border: 1px solid #f1e7e7;
+  }
+}
+
+.app-btn {
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: 0;
+  margin: 10px;
+  outline: #ffffff;
+  cursor: pointer;
+
+  &--primary {
+    background: #A3C644;
+    color: #fff;
+    &:hover {
+      background: #7F993A;
+    }
   }
 }

@@ -21,7 +21,7 @@ class LoginControl extends React.Component {
         const username = this.state.username;
 
         return (
-            <div>
+            <div className='login-control'>
                 <Greeting isLoggedIn={isLoggedIn} username={username} />
                 {isLoggedIn ? (
                     <LogoutButton onClick={this.handleLogoutClick} />
@@ -43,7 +43,7 @@ function Greeting(props) {
 
 function LoginButton(props) {
     return (
-        <button onClick={props.onClick}>
+        <button onClick={props.onClick} className='app-btn app-btn--primary'>
             Login
         </button>
     );
@@ -51,7 +51,7 @@ function LoginButton(props) {
 
 function LogoutButton(props) {
     return (
-        <button onClick={props.onClick}>
+        <button onClick={props.onClick} className='app-btn app-btn--primary'>
             Logout
         </button>
     );

@@ -15,9 +15,29 @@ class GridItem extends React.Component {
 class Grid extends React.Component {
     constructor(props){
         super(props);
-        this.state = { items: this.props.data.items};
+        this.state = {
+            items: this.props.data.items,
+            newItem: ''
+        };
 
         this.filterList = this.filterList.bind(this);
+        this.updateList = this.updateList.bind(this);
+        this.addItem = this.addItem.bind(this);
+    }
+    updateList (e)
+    {
+        this.setState({
+            newItem: e.target.value
+        });
+    }
+
+    addItem (e)
+    {
+        e.preventDefault();
+        this.setState({
+            items: [...this.state.items, {title: this.state.newItem}],
+            newItem: ''
+        });
     }
     filterList(e){
         var filteredList = this.props.data.items.filter(function(item){
@@ -32,9 +52,13 @@ class Grid extends React.Component {
                 <div className='grid__search'>
                     <input placeholder="Search" onChange={this.filterList} />
                 </div>
-                <div className='grid__add'>
-                    <input placeholder="Add " />
-                </div>
+                <form onSubmit={this.addItem}  className='grid__add'>
+                    <input type='text'
+                           value={this.state.newItem}
+                           onChange={this.updateList}
+                    />
+                    <button className='app-btn app-btn--primary'>Add Item</button>
+                </form>
                 <div className='grid'>
                     {
                         this.state.items.map(function (item) {
