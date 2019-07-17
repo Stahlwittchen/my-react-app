@@ -5,6 +5,7 @@ import Clock from "./Components/clock"
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import logo from './logo.svg';
 import LoginControl from './Components/loginControl';
+import TicTacToe from './Components/ticTacToe'
 
 const Data = {
     items: [
@@ -29,6 +30,7 @@ function App() {
                 <nav  className="App-nav">
                     <Link to='/' className='App-nav__link'>Home</Link>
                     <Link to='/Grid' className='App-nav__link'>Grid</Link>
+                    <Link to='/TicTacToe' className='App-nav__link'>TicTacToe</Link>
                 </nav>
                 <LoginControl  isLoggedIn={false}  />
             </div>
@@ -38,6 +40,7 @@ function App() {
             <Route path='/Grid'
                    render={(props) => <Grid {...props} data={Data}/>}
             />
+            <Route path='/TicTacToe' component={TicTacToe}  />
         </main>
     </BrowserRouter>
   );
