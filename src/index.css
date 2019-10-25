@@ -26,3 +26,11 @@ a {
 header {
     background-color: #333;
 }
+.cards {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 130px);
+    grid-gap: 20px;
+    padding: 20px;
+    background-color: forestgreen;
+}
