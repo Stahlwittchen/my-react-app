@@ -5,7 +5,7 @@ import Clock from "./Components/clock"
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import logo from './logo.svg';
 import LoginControl from './Components/loginControl';
-import MemoryGame from './Components/memory'
+import MemoryGame from './Components/MemoryGame'
 
 const Data = {
     items: [
@@ -16,7 +16,7 @@ const Data = {
         {title: 'item 5', description: 'lorem 5'},
         {title: 'item 6', description: 'lorem 6'}
     ]
-}
+};
 
 function App() {
   return (
