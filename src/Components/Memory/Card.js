@@ -7,24 +7,25 @@ export class Card extends React.Component {
     }
 
     shouldComponentUpdate(nextProps, nextState){
-        return  nextState.isShow || (this.state.isShow && this.props.hasTwoCards)
+        if( ( !this.state.isShow && nextState.isShow) ){
+            console.log( this.props.isPair ===false&&nextProps.isPair===null )
+        }
+
+        return ( !this.state.isShow && nextState.isShow) || this.state.isShow
     }
 
     componentDidUpdate(prevProps) {
-         if (this.props.hasTwoCards || prevProps.hasTwoCards) {
-             setTimeout(() => {
-                if ( this.state.isShow) {
-                    if (this.props.isPair ){
-                        this.setState({ isShow: false });
-                        console.log('remove card')
-                    } else {
-                        this.setState({ isShow: false });
-                        console.log('Hide card')
-                    }
+        if(this.state.isRemoved || this.props.isPair === null) return false;
 
-                }
+        if (!this.props.isPair){
+            setTimeout(() => {
+                this.setState({ isShow: false });
              }, 1000);
-         }
+        } else {
+            setTimeout(() => {
+                this.setState({ isShow: false, isRemoved: true });
+            }, 1000);
+        }
     }
 
 
@@ -35,18 +36,16 @@ export class Card extends React.Component {
     };
 
     render(){
-        console.log("render")
         const { el } = this.props;
         const back =  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoDPQS66rgZIMojOWqymU_ErFzmCoPdn9MWsDkiSQmi11-mIo7vg&s";
         const src = this.state.isShow ? el.src : back;
-        // if (this.state.isRemoved) {
-        //     return
-        // }
-        return (
-            <div onClick={(e) => this.ShowCard()}>
-                <img src={ src } alt="" height="180"/>
-            </div>
-        )
+        if (!this.state.isRemoved) {
+            return (
+                <div onClick={(e) => this.ShowCard()}>
+                    <img src={ src } alt="" height="180"/>
+                </div>
+            )
+        } else return <div></div>
     }
 }
 
