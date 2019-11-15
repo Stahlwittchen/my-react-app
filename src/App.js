@@ -5,6 +5,7 @@ import Clock from "./Components/clock"
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import logo from './logo.svg';
 import LoginControl from './Components/loginControl';
+import MemoryGame from './Components/MemoryGame'
 
 const Data = {
     items: [
@@ -15,7 +16,7 @@ const Data = {
         {title: 'item 5', description: 'lorem 5'},
         {title: 'item 6', description: 'lorem 6'}
     ]
-}
+};
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
                 <nav  className="App-nav">
                     <Link to='/' className='App-nav__link'>Home</Link>
                     <Link to='/Grid' className='App-nav__link'>Grid</Link>
+                    <Link to='/MemoryGame' className='App-nav__link'>Memory Game</Link>
                 </nav>
                 <LoginControl  isLoggedIn={false}  />
             </div>
@@ -38,6 +40,7 @@ function App() {
             <Route path='/Grid'
                    render={(props) => <Grid {...props} data={Data}/>}
             />
+            <Route path='/MemoryGame' component={MemoryGame}  />
         </main>
     </BrowserRouter>
   );
